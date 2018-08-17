@@ -505,6 +505,18 @@ objects:
           kind: ImageStreamTag
           name: amp-backend:latest
 
+
+
+
+
+
+
+
+
+
+
+
+
 - apiVersion: v1
   kind: Service
   metadata:
