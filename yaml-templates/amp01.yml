@@ -474,7 +474,7 @@ objects:
           imagePullPolicy: IfNotPresent
           name: backend-listener
           resources:
-            limits:
+            limits:ee
               cpu: 1000m
               memory: 700Mi
             requests:
@@ -504,6 +504,49 @@ objects:
         from:
           kind: ImageStreamTag
           name: amp-backend:latest
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: backend-redis
+    labels:
+      application: 3scale-amp
+      service: backend
+      backend: redis
+  spec:
+    ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+    selector:
+      deploymentConfig: backend-redis
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: backend-listener
+    labels:
+      application: 3scale-amp
+      service: backend
+      backend: listener
+  spec:
+    ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+      name: http
+    selector:
+      deploymentConfig: backend-listener
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -505,10 +505,6 @@ objects:
           kind: ImageStreamTag
           name: amp-backend:latest
 
-
-
-
-
 - apiVersion: v1
   kind: Service
   metadata:
@@ -541,6 +537,11 @@ objects:
       name: http
     selector:
       deploymentConfig: backend-listener
+
+
+
+
+
 
 - apiVersion: v1
   kind: Service
