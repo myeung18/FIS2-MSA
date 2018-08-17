@@ -507,3 +507,143 @@ objects:
 
 
 
+
+
+
+
+
+
+
+
+parameters:
+
+- name: ZYNC_DATABASE_PASSWORD
+  displayName: PostgreSQL Connection Password
+  description: Password for the PostgreSQL connection user.
+  generate: expression
+  from: "[a-zA-Z0-9]{16}"
+  required: true
+
+- name: ZYNC_SECRET_KEY_BASE
+  generate: expression
+  from: "[a-zA-Z0-9]{16}"
+  required: true
+
+- name: ZYNC_AUTHENTICATION_TOKEN
+  generate: expression
+  from: "[a-zA-Z0-9]{16}"
+  required: true
+
+- name: AMP_RELEASE
+  description: "AMP release tag."
+  value: "2.2.0"
+  required: true
+- name: ADMIN_PASSWORD
+  required: true
+  generate: expression
+  from: "[a-z0-9]{8}"
+- name: ADMIN_USERNAME
+  value: admin
+  required: true
+- name: APICAST_ACCESS_TOKEN
+  required: true
+  generate: expression
+  from: "[a-z0-9]{8}"
+  description: "Read Only Access Token that is APIcast going to use to download its configuration."
+- name: ADMIN_ACCESS_TOKEN
+  required: false
+  generate: expression
+  from: "[a-z0-9]{16}"
+  description: "Admin Access Token with all scopes and write permissions for API access."
+- name: WILDCARD_DOMAIN
+  description: Root domain for the wildcard routes. Eg. example.com will generate 3scale-admin.example.com.
+  required: true
+- name: WILDCARD_POLICY
+  description: Use "Subdomain" to create a wildcard route for apicast wildcard router
+  required: true
+  value: "None"
+- name: TENANT_NAME
+  description: "Tenant name under the root that Admin UI will be available with -admin suffix."
+  required: true
+  value: "3scale"
+- name: MYSQL_USER
+  displayName: MySQL User
+  description: Username for MySQL user that will be used for accessing the database.
+  value: "mysql"
+  required: true
+- name: MYSQL_PASSWORD
+  displayName: MySQL Password
+  description: Password for the MySQL user.
+  generate: expression
+  from: "[a-z0-9]{8}"
+  required: true
+- name: MYSQL_DATABASE
+  displayName: MySQL Database Name
+  description: Name of the MySQL database accessed.
+  value: "system"
+  required: true
+- name: MYSQL_ROOT_PASSWORD
+  displayName: MySQL Root password.
+  description: Password for Root user.
+  generate: expression
+  from: "[a-z0-9]{8}"
+  required: true
+- name: SYSTEM_BACKEND_USERNAME
+  description: Internal 3scale API username for internal 3scale api auth.
+  value: "3scale_api_user"
+  required: true
+- name: SYSTEM_BACKEND_PASSWORD
+  description: Internal 3scale API password for internal 3scale api auth.
+  generate: expression
+  from: "[a-z0-9]{8}"
+  required: true
+- name: REDIS_IMAGE
+  description: Redis image to use
+  required: true
+  value: "registry.access.redhat.com/rhscl/redis-32-rhel7:3.2"
+- name: MYSQL_IMAGE
+  description: Mysql image to use
+  required: true
+  value: "registry.access.redhat.com/rhscl/mysql-57-rhel7:5.7-5"
+- name: SYSTEM_BACKEND_SHARED_SECRET
+  description: Shared secret to import events from backend to system.
+  generate: expression
+  from: "[a-z0-9]{8}"
+  required: true
+- name: SYSTEM_APP_SECRET_KEY_BASE
+  description: System application secret key base
+  generate: expression
+  from: "[a-f0-9]{128}"
+  required: true
+- name: APICAST_MANAGEMENT_API
+  description: "Scope of the APIcast Management API. Can be disabled, status or debug. At least status required for health checks."
+  required: false
+  value: "status"
+- name: APICAST_OPENSSL_VERIFY
+  description: "Turn on/off the OpenSSL peer verification when downloading the configuration. Can be set to true/false."
+  required: false
+  value: "false"
+- name: APICAST_RESPONSE_CODES
+  description: "Enable logging response codes in APIcast."
+  value: "true"
+  required: false
+- name: MASTER_NAME
+  description: "The root name which Admin UI will be available with -admin suffix."
+  value: "master"
+  required: true
+- name: MASTER_USER
+  value: master
+  required: true
+- name: MASTER_PASSWORD
+  required: true
+  generate: expression
+  from: "[a-z0-9]{8}"
+- name: MASTER_ACCESS_TOKEN
+  required: true
+  generate: expression
+  from: "[a-z0-9]{8}"
+- name: APICAST_REGISTRY_URL
+  description: "The URL to point to APIcast policies registry management"
+  value: "http://apicast-staging:8090/policies"
+  required: true
+
